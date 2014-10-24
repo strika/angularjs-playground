@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="angular.js"></script>
+  </head>
+  <body>
+    <h1>AngularJS playground</h1>
+
+    <div ng-app="projectDescription">
+      <form
+        ng-controller="ProjectDescriptionController as descriptionCtrl"
+        ng-init="descriptionCtrl.init()">
+        <button ng-click="descriptionCtrl.click()">Click me</button>
+      </form>
+    </div>
+
+    <script>
+      function ProjectDescriptionController() {
+        var vm = this;
+
+        vm.init = function() {
+          alert("Hello from ProjectDescriptionController");
+          return false;
+        };
+
+        vm.click = function() {
+          alert("Click");
+          return false;
+        };
+
+        return vm;
+      }
+
+      angular
+      .module("projectDescription", [])
+      .controller("ProjectDescriptionController", [ProjectDescriptionController]);
+    </script>
+  </body>
+</html>
