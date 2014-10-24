@@ -7,15 +7,16 @@
   <body>
     <div ng-app="project">
       <div ng-controller="ProjectController as projectCtrl">
-      <h1>{{projectCtrl.name}}</h1>
-      <p ng-hide="projectCtrl.editing">
-        {{projectCtrl.description}}
-        <a href ng-click="projectCtrl.edit()">Edit</a>
-      </p>
+        <h1>{{projectCtrl.name}}</h1>
+        <p ng-hide="projectCtrl.editing">
+          {{projectCtrl.description}}
+          <a href ng-click="projectCtrl.edit()">Edit</a>
+        </p>
 
-      <div ng-show="projectCtrl.editing">
-        <input ng-model="projectCtrl.description" type="text">
-        <button ng-click="projectCtrl.save()">Save</button>
+        <div ng-show="projectCtrl.editing">
+          <input ng-model="projectCtrl.description" type="text">
+          <button ng-click="projectCtrl.save()">Save</button>
+        </div>
       </div>
     </div>
 
