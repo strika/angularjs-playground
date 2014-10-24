@@ -3,37 +3,43 @@
   <head>
     <script src="angular.js"></script>
   </head>
-  <body>
-    <h1>AngularJS playground</h1>
 
-    <div ng-app="projectDescription">
-      <form
-        ng-controller="ProjectDescriptionController as descriptionCtrl"
-        ng-init="descriptionCtrl.init()">
-        <button ng-click="descriptionCtrl.click()">Click me</button>
-      </form>
+  <body>
+    <div ng-app="project">
+      <div ng-controller="ProjectController as projectCtrl">
+      <h1>{{projectCtrl.name}}</h1>
+      <p ng-hide="projectCtrl.editing">
+        {{projectCtrl.description}}
+        <a href ng-click="projectCtrl.edit()">Edit</a>
+      </p>
+
+      <div ng-show="projectCtrl.editing">
+        <input ng-model="projectCtrl.description" type="text">
+        <button ng-click="projectCtrl.save()">Save</button>
+      </div>
     </div>
 
     <script>
-      function ProjectDescriptionController() {
+      function ProjectController() {
         var vm = this;
 
-        vm.init = function() {
-          alert("Hello from ProjectDescriptionController");
-          return false;
-        };
+        vm.name = "Plakatt";
+        vm.edititing = false;
 
-        vm.click = function() {
-          alert("Click");
-          return false;
-        };
+        vm.edit = function() {
+          vm.editing = true;
+        }
+
+        vm.save = function() {
+          vm.editing = false;
+        }
 
         return vm;
       }
 
       angular
-      .module("projectDescription", [])
-      .controller("ProjectDescriptionController", [ProjectDescriptionController]);
+      .module("project", [])
+      .controller("ProjectController", [ProjectController]);
     </script>
   </body>
 </html>
